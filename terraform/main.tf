@@ -2,7 +2,6 @@ terraform {
   required_providers {
     newrelic = {
       source  = "newrelic/newrelic"
-      version = "~> 3.22" 
     }
   }
 }
@@ -81,7 +80,7 @@ resource "newrelic_workflow" "foo" {
     type = "FILTER"
 
     predicate {
-      attribute = "accumulations.tag.team"
+      attribute = "labels.policyIds"
       operator = "EXACTLY_MATCHES"
       values = [ newrelic_alert_policy.alert_policy_git.id ]
     }
