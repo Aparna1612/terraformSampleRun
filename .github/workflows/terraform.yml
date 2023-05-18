@@ -1,16 +1,28 @@
-name: 'Terraform GitHub Actions'
-on:
+name: Terraform GitHub Actions
+'on':
   - pull_request
   - push
 jobs:
-  terraform:
-    name: 'Terraform'
+  terraforminit:
+    name: Terraform init
     runs-on: windows-latest
     steps:
-      - name: 'Checkout'
+      - name: Checkout
         uses: actions/checkout@master
         with:
           tf_actions_version: 0.12.18
-          tf_actions_subcommand: 'init'
+          tf_actions_subcommand: init
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+  terraformapply:
+    name: Terraform apply
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          tf_actions_version: 0.12.18
+          tf_actions_subcommand: apply
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
