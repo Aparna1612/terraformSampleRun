@@ -14,11 +14,7 @@ provider  "newrelic" {
 }
 
 
-#to create a new relic alert policy
-resource "newrelic_alert_policy" "foo" {
-  name = "Example terraform policy"
-  incident_preference = "PER_POLICY" # PER_POLICY is default
-}
+
 
 
 
@@ -29,14 +25,14 @@ data "newrelic_entity" "app" {
   domain = "APM"
 }
 
-resource "newrelic_alert_policy" "FoodME_alert_policy" {
-  name = "FoodME_alert_policy_demo"
+resource "newrelic_alert_policy" "alert_policy_git" {
+  name = "alert_policy_git_demo"
 }
 
-resource "newrelic_alert_condition" "FoodME_alert_policy" {
-  policy_id = newrelic_alert_policy.FoodME_alert_policy.id
+resource "newrelic_alert_condition" "alert_policy_git" {
+  policy_id = newrelic_alert_policy.alert_policy_git.id
 
-  name        = "FoodME_alert_policy_1"
+  name        = "alert_condition_git"
   type        = "apm_app_metric"
   entities    = [data.newrelic_entity.app.application_id]
   metric      = "apdex"
@@ -53,8 +49,6 @@ resource "newrelic_alert_condition" "FoodME_alert_policy" {
 }
 
 
-#=================================================================
-#channel
 resource "newrelic_notification_destination" "email" {
   account_id = 3826875
   name = "email-example"
@@ -78,11 +72,8 @@ resource "newrelic_notification_channel" "email" {
   }
 }
 
-
-#==============================================================================
-
 resource "newrelic_workflow" "foo" {
-  name = "workflow-example"
+  name = "workflow-git_demo"
   muting_rules_handling = "NOTIFY_ALL_ISSUES"
 
   issues_filter {
@@ -92,7 +83,7 @@ resource "newrelic_workflow" "foo" {
     predicate {
       attribute = "accumulations.tag.team"
       operator = "EXACTLY_MATCHES"
-      values = [ "growth" ]
+      values = [ newrelic_alert_policy.alert_policy_git.id ]
     }
   }
 
