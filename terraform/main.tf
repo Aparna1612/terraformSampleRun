@@ -8,7 +8,7 @@ terraform {
   required_providers {
     newrelic = {
       source  = "newrelic/newrelic"
-      version = "~> 3.23"
+      version = ">= 2.22"
       #constraints = "~> 3.23"
     }
   }
