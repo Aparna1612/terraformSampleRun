@@ -1,4 +1,4 @@
-provider  "newrelic" {
+provider  "newrelic"{
     account_id = 3826875
     api_key = "NRAK-BY52LCHM4JNZWY59IXOZXW7J73A"
     region = "US"
