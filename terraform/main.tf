@@ -1,24 +1,18 @@
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    newrelic = {
-      source  = "registry.terraform.io/newrelic/newrelic"
-      version = "~> 3.23"
-      constraints = "~> 3.23"
-    }
-  }
-}
-
 provider  "newrelic" {
     account_id = 3826875
     api_key = "NRAK-BY52LCHM4JNZWY59IXOZXW7J73A"
     region = "US"
 }
-
-
-
-
-
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
+    newrelic = {
+      source  = "newrelic/newrelic"
+      version = "~> 3.23"
+      #constraints = "~> 3.23"
+    }
+  }
+}
 
 #newrelic_alert_condition
 data "newrelic_entity" "app" {
