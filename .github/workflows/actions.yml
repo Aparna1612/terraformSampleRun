@@ -9,10 +9,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v1
-      - name : setup terraform
-        uses : hashicorp/setup-terraform@v1.2.0
-        with : 
-          CLI_CONFIG_CREDENTIALS_TOKEN: '${{ secrets.TF_API_TOKEN }}'
       - name: Terraform Init
         uses: hashicorp/terraform-github-actions/init@v0.4.0
         env:
