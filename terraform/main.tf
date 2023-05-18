@@ -4,6 +4,11 @@ terraform {
       source = "hashicorp/aws"
       Version = "~>3.27"
     }
+    newrelic = {
+      source  = "newrelic/newrelic"
+      version = ">= 2.22"
+      #constraints = "~> 3.23"
+    }
   }
   required_version = ">=0.14.9"
 
@@ -19,16 +24,7 @@ provider  "newrelic"{
     api_key = "NRAK-BY52LCHM4JNZWY59IXOZXW7J73A"
     region = "US"
 }
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    newrelic = {
-      source  = "newrelic/newrelic"
-      version = ">= 2.22"
-      #constraints = "~> 3.23"
-    }
-  }
-}
+
 
 #newrelic_alert_condition
 data "newrelic_entity" "app" {
