@@ -1,15 +1,15 @@
 terraform {
   required_version = ">= 0.13"
   required_providers {
-    registry.terraform.io/newrelic/newrelic = {
-      source  = "newrelic/newrelic"
+    newrelic = {
+      source  = "registry.terraform.io/newrelic/newrelic"
       version = "~> 3.23"
-     #constraints = "~> 3.23"
+      constraints = "~> 3.23"
     }
   }
 }
 
-provider  "registry.terraform.io/newrelic/newrelic" {
+provider  "newrelic" {
     account_id = 3826875
     api_key = "NRAK-BY52LCHM4JNZWY59IXOZXW7J73A"
     region = "US"
