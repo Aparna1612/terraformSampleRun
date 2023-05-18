@@ -1,7 +1,7 @@
 terraform {
   required_version = ">= 0.13"
   required_providers {
-    newrelic = {
+    registry.terraform.io/newrelic/newrelic = {
       source  = "newrelic/newrelic"
       version = "~> 3.23"
      #constraints = "~> 3.23"
