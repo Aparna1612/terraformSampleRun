@@ -6,10 +6,10 @@ terraform {
   required_providers {
     newrelic = {
       source  = "newrelic/newrelic"
-      version = "3.23.0"
+      version = 3.23.0
     }
   }
-    required_version = ">= 1.3.1"
+    #required_version = ">= 1.3.1"
 }
 provider "newrelic" {
   account_id = 3826875
