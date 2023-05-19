@@ -25,7 +25,6 @@ terraform {
 }
 
 # --- Actual new relic terraform here, try changing the policy name!
-
 resource "newrelic_alert_policy" "workflowtest" {
   name = "Example Github Workflow"
   incident_preference = "PER_POLICY" 
