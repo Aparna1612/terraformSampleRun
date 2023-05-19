@@ -23,5 +23,3 @@ resource "newrelic_alert_policy" "workflowtest" {
   name = "Example Github Workflow terraform"
   incident_preference = "PER_POLICY"
 }
-
-}
