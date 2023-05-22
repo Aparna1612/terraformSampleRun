@@ -1,5 +1,5 @@
 
-name: "Terraform Plan"
+name: "Terraform GitHub Actions"
 
 # Trigger when a pull request is received
 on:
@@ -47,28 +47,13 @@ jobs:
       - name: "Run - Terraform Plan"
         id: plan
         run: terraform plan -input=false -no-color -parallelism=5
-        env:
-          NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
-
-      # Submit a comment with the plan output to the pull request
-#       - name: "Run - Terraform Comment"
-#         uses: actions/github-script@0.9.0
 #         env:
-#           STDOUT: "```${{ steps.plan.outputs.stdout }}```"
-#         with:
-#           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#           script: |
-#             github.issues.createComment({
-#               issue_number: context.issue.number,
-#               owner: context.repo.owner,
-#               repo: context.repo.repo,
-#               body: process.env.STDOUT
-#             })
+#           NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+#           NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
             
       - name: "Run - Terraform Apply"
         run: terraform apply -input=false -auto-approve
-        env:
-          NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
+#         env:
+#           NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+#           NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
        
