@@ -46,9 +46,9 @@ jobs:
       - name: "Run - Terraform Plan"
         id: plan
         run: terraform plan -input=false -no-color -parallelism=5
-        env:
-          NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
+#         env:
+#           NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+#           NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
 
       # Submit a comment with the plan output to the pull request
 #       - name: "Run - Terraform Comment"
@@ -67,7 +67,7 @@ jobs:
             
       - name: "Run - Terraform Apply"
         run: terraform apply -input=false -auto-approve
-        env:
-          NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
+#         env:
+#           NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+#           NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
        
